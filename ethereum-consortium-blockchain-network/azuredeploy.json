@@ -417,7 +417,7 @@
             "[variables('addressPrefix')]"
           ]
         },
-        "subnets": "[take(variables('subnetPropertiesArray'), variables('numSubnets'))]"
+        "subnets": "[variables('subnetPropertiesArray')]"
       }
     },
     {
