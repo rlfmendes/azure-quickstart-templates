@@ -157,7 +157,7 @@
     "apiVersionAvailabilitySets": "2015-06-15",
     "apiVersionNetworkSecurityGroups": "2015-06-15",
     "apiVersionNetworkInterfaces": "2015-06-15",
-    "apiVersionVirtualMachines": "2016-03-30",
+    "apiVersionVirtualMachines": "2015-06-15",
     "apiVersionVirtualNetworks": "2015-06-15",
     "authType": "Password",
     "storageAccountType": "Standard_LRS",
