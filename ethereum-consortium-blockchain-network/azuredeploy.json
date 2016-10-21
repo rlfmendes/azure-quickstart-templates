@@ -156,7 +156,7 @@
     "apiVersionStorageAccounts": "2016-01-01",
     "apiVersionAvailabilitySets": "2015-06-15",
     "apiVersionNetworkSecurityGroups": "2015-06-15",
-    "apiVersionNetworkInterfaces": "2016-09-01",
+    "apiVersionNetworkInterfaces": "2015-06-15",
     "apiVersionVirtualMachines": "2016-03-30",
     "apiVersionVirtualNetworks": "2016-09-01",
     "authType": "Password",
