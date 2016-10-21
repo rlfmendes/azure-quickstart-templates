@@ -158,7 +158,7 @@
     "apiVersionNetworkSecurityGroups": "2015-06-15",
     "apiVersionNetworkInterfaces": "2015-06-15",
     "apiVersionVirtualMachines": "2016-03-30",
-    "apiVersionVirtualNetworks": "2016-09-01",
+    "apiVersionVirtualNetworks": "2015-06-15",
     "authType": "Password",
     "storageAccountType": "Standard_LRS",
     "namingInfix": "[toLower(substring(concat(parameters('namePrefix'), uniqueString(resourceGroup().id)), 0, 9))]",
