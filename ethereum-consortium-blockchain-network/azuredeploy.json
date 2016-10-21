@@ -22,23 +22,19 @@
       "type": "securestring",
       "metadata": {
         "description": "Administrator password for each deployed VM"
-      },
-      "minLength": 12,
-      "maxLength": 72
+      }
     },
     "ethereumAccountPsswd": {
       "type": "securestring",
       "metadata": {
         "description": "Password used to secure the default Ethereum account that will be generated"
-      },
-      "minLength": 12
+      }
     },
     "ethereumAccountPassphrase": {
       "type": "securestring",
       "metadata": {
         "description": "Password used to generate the private key associated with the default Ethereum account that is generated.  Consider a password with sufficient randomness to ensure a strong private key"
-      },
-      "minLength": 12
+      }
     },
     "ethereumNetworkID": {
       "type": "int",
