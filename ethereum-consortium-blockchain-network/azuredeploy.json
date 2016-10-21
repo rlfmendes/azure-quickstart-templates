@@ -152,10 +152,10 @@
     }
   },
   "variables": {
-    "apiVersionDeployments": "2016-09-01",
+    "apiVersionDeployments": "2016-06-01",
     "apiVersionStorageAccounts": "2016-01-01",
-    "apiVersionAvailabilitySets": "2016-03-30",
-    "apiVersionNetworkSecurityGroups": "2016-09-01",
+    "apiVersionAvailabilitySets": "2015-06-15",
+    "apiVersionNetworkSecurityGroups": "2015-06-15",
     "apiVersionNetworkInterfaces": "2016-09-01",
     "apiVersionVirtualMachines": "2016-03-30",
     "apiVersionVirtualNetworks": "2016-09-01",
