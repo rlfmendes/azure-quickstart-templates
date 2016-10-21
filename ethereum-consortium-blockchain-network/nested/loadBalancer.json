@@ -28,7 +28,7 @@
     }
   },
   "variables": {
-    "apiVersionPublicIPAddresses": "2016-09-01",
+    "apiVersionPublicIPAddresses": "2015-06-15",
     "apiVersionLoadBalancers": "2016-09-01",
     "apiVersionLoadBalanceInboundNATRules": "2016-09-01",
     "lbName": "[concat(parameters('dnsHostName'), '-LB')]",
