@@ -145,10 +145,6 @@
       "type": "Microsoft.Network/loadBalancers/inboundNatRules",
       "name": "[concat(variables('lbName'), '/', variables('loadBalancerInboundNatRuleNamePart'), copyIndex())]",
       "location": "[resourceGroup().location]",
-      "copy": {
-        "name": "lbNatLoop",
-        "count": "[parameters('numInboundNATRules')]"
-      },
       "dependsOn": [
         "[concat('Microsoft.Network/loadBalancers/', variables('lbName'))]"
       ],
