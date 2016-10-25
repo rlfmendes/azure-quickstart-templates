@@ -140,7 +140,7 @@
         ],
         "inboundNatRules": [
           {
-            "name": "[concat(variables('lbName'), '/', variables('loadBalancerInboundNatRuleNamePart'), '1')]",
+            "name": "inboundRule1",
             "properties": {
               "frontendIPConfiguration": {
                 "id": "[variables('lbFrontEndIPConfigID')]"
