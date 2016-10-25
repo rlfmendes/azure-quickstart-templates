@@ -118,19 +118,6 @@
             }
           }
         ],
-        "inboundNatRules": [
-          {
-            "name": "[concat(variables('lbName'), '/', variables('loadBalancerInboundNatRuleNamePart'), '1')]",
-            "properties": {
-              "frontendIPConfiguration": {
-              "id": "[variables('lbFrontEndIPConfigID')]"
-            },
-            "protocol": "tcp",
-            "frontendPort": "[parameters('inboundNATRuleFrontendStartingPort')]",
-            "backendPort": "[parameters('inboundNATRuleBackendPort')]",
-            "enableFloatingIP": false
-          } 
-        ],
         "probes": [
           {
             "name": "lbProbe1",
@@ -150,9 +137,23 @@
               "numberOfProbes": 2
             }
           }
+        ],
+        "inboundNatRules": [
+          {
+            "name": "[concat(variables('lbName'), '/', variables('loadBalancerInboundNatRuleNamePart'), '1')]",
+            "properties": {
+              "frontendIPConfiguration": {
+                "id": "[variables('lbFrontEndIPConfigID')]"
+              },
+              "protocol": "tcp",
+              "frontendPort": "[parameters('inboundNATRuleFrontendStartingPort')]",
+              "backendPort": "[parameters('inboundNATRuleBackendPort')]",
+              "enableFloatingIP": false
+            }
+          }
         ]
       }
-    } 
+    }
   ],
   "outputs": {
     "fqdn": {
