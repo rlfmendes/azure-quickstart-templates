@@ -153,7 +153,7 @@
           "id": "[variables('lbFrontEndIPConfigID')]"
         },
         "protocol": "tcp",
-        "frontendPort": "[(parameters('inboundNATRuleFrontendStartingPort')]",
+        "frontendPort": "[parameters('inboundNATRuleFrontendStartingPort')]",
         "backendPort": "[parameters('inboundNATRuleBackendPort')]",
         "enableFloatingIP": false
       }
