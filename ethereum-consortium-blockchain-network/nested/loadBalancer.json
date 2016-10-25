@@ -118,6 +118,19 @@
             }
           }
         ],
+        "inboundNatRules": [
+          {
+            "name": "[concat(variables('lbName'), '/', variables('loadBalancerInboundNatRuleNamePart'), '1')]",
+            "properties": {
+              "frontendIPConfiguration": {
+              "id": "[variables('lbFrontEndIPConfigID')]"
+            },
+            "protocol": "tcp",
+            "frontendPort": "[parameters('inboundNATRuleFrontendStartingPort')]",
+            "backendPort": "[parameters('inboundNATRuleBackendPort')]",
+            "enableFloatingIP": false
+          } 
+        ],
         "probes": [
           {
             "name": "lbProbe1",
@@ -139,25 +152,7 @@
           }
         ]
       }
-    },
-    {
-      "apiVersion": "[variables('apiVersionLoadBalanceInboundNATRules')]",
-      "type": "Microsoft.Network/loadBalancers/inboundNatRules",
-      "name": "[concat(variables('lbName'), '/', variables('loadBalancerInboundNatRuleNamePart'), '1')]",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[concat('Microsoft.Network/loadBalancers/', variables('lbName'))]"
-      ],
-      "properties": {
-        "frontendIPConfiguration": {
-          "id": "[variables('lbFrontEndIPConfigID')]"
-        },
-        "protocol": "tcp",
-        "frontendPort": "[parameters('inboundNATRuleFrontendStartingPort')]",
-        "backendPort": "[parameters('inboundNATRuleBackendPort')]",
-        "enableFloatingIP": false
-      }
-    }
+    } 
   ],
   "outputs": {
     "fqdn": {
