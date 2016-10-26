@@ -156,10 +156,6 @@
     }
   ],
   "outputs": {
-    "fqdn": {
-      "type": "string",
-      "value": "[reference(variables('lbPublicIPAddressName')).dnsSettings.fqdn]"
-    },
     "backendAddressPoolID": {
       "type": "string",
       "value": "[variables('lbBackendAddressPoolID')]"
