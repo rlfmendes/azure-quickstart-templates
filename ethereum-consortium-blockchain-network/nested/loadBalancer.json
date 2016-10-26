@@ -140,7 +140,7 @@
         ],
         "inboundNatRules": [
           {
-            "name": "inboundRule1",
+            "name": "SSH-VM0",
             "properties": {
               "frontendIPConfiguration": {
                 "id": "[variables('lbFrontEndIPConfigID')]"
