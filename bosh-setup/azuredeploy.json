@@ -63,6 +63,12 @@
       "metadata": {
         "description": "The flag allowing to deploy Bosh automatically or not"
       }
+    },
+    "azureStackResource": {
+      "type": "string",
+      "metadata": {
+        "description": "Resource of the Azure Stack deployment. Use Azure Powershell command: (Invoke-RestMethod -Uri https://api.azurestack.local/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]"
+      }
     }
   },
   "variables": {
@@ -93,7 +99,7 @@
     "ubuntuOSVersion": "14.04.3-LTS",
     "sshKeyPath": "[concat('/home/',parameters('adminUsername'),'/.ssh/authorized_keys')]",
 
-    "baseUriAzureCloud": "https://raw.githubusercontent.com/bingosummer/azure-quickstart-templates/AzureStack/bosh-setup/",
+    "baseUriAzureCloud": "https://raw.githubusercontent.com/bingosummer/azure-quickstart-templates/AzureStackTP2/bosh-setup/",
     "baseUriAzureChinaCloud": "https://cloudfoundry.blob.core.chinacloudapi.cn/",
 
     "filesToDownloadAzureCloud": [
@@ -166,7 +172,7 @@
     "environmentAzureStack": {
       "serviceHostBase": "azurestack.local",
       "secondaryDNS": "8.8.8.8",
-      "dnsRecursor": "192.168.200.6",
+      "dnsRecursor": "10.23.9.225",
       "boshReleaseUrl": "https://bosh.io/d/github.com/cloudfoundry/bosh?v=256.2",
       "boshReleaseSha1": "ff2f4e16e02f66b31c595196052a809100cfd5a8",
       "boshAzureCPIReleaseUrl": "https://cloudfoundry.blob.core.windows.net/azurestack/bosh-azure-cpi-13-azurestack.1.tgz",
@@ -176,11 +182,11 @@
       "boshInitUrl": "https://s3.amazonaws.com/bosh-init-artifacts/bosh-init-0.0.95-linux-amd64",
       "cfReleaseUrl": "https://bosh.io/d/github.com/cloudfoundry/cf-release?v=238",
       "cfReleaseSha1": "fa6d35300f4fcd74a75fd8c7138f592acfcb32b0",
-      "diegoReleaseUrl": "https://mirror.azure.cn/bosh/diego/v0.1476.0/diego-0.1476.0.tgz",
-      "diegoReleaseSha1": "fd9db50053423cb15aa994b2a1e4d2c0aa89e695",
-      "gardenReleaseUrl": "http://mirror.azure.cn/bosh/diego/v0.1476.0/garden-linux-0.338.0.tgz",
+      "diegoReleaseUrl": "https://bosh.io/d/github.com/cloudfoundry-incubator/diego-release?v=0.1476.0",
+      "diegoReleaseSha1": "4b66fde250472e47eb2a0151bb676fc1be840f47",
+      "gardenReleaseUrl": "https://bosh.io/d/github.com/cloudfoundry-incubator/garden-linux-release?v=0.338.0",
       "gardenReleaseSha1": "432225d88edc9731be4453cb61eba33fa829ebdc",
-      "cflinuxfs2ReleaseUrl": "http://mirror.azure.cn/bosh/diego/v0.1477.0/cflinuxfs2-rootfs-1.16.0.tgz",
+      "cflinuxfs2ReleaseUrl": "https://bosh.io/d/github.com/cloudfoundry/cflinuxfs2-rootfs-release?v=1.16.0",
       "cflinuxfs2ReleaseSha1": "acfa1c4aad1fa9ef4623bf189cbab788a53f678e"
     },
     "environment": "[variables(concat('environment', parameters('environment')))]",
@@ -543,7 +549,8 @@
           "CFLINUXFS2_RELEASE_SHA1": "[variables('environment').cflinuxfs2ReleaseSha1]",
           "BOSH_INIT_URL": "[variables('environment').boshInitUrl]",
           "KEEP_UNREACHABLE_VMS": "[variables('keepUnreachableVMs')]",
-          "AUTO_DEPLOY_BOSH": "[parameters('autoDeployBosh')]"
+          "AUTO_DEPLOY_BOSH": "[parameters('autoDeployBosh')]",
+          "AZURE_STACK_RESOURCE": "[parameters('azureStackResource')]"
         },
         "protectedSettings": {
           "commandToExecute": "[concat('bash -l -c \"./setup_env', ' ', parameters('tenantID'), ' ', parameters('clientID'), ' \"', parameters('clientSecret'), '\" >/home/', parameters('adminUsername'), '/install.log 2>&1\"')]"
