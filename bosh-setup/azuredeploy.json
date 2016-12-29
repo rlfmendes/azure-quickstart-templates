@@ -69,6 +69,9 @@
       "metadata": {
         "description": "Resource of the Azure Stack deployment. Use Azure Powershell command: (Invoke-RestMethod -Uri https://api.azurestack.local/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]"
       }
+    },
+    "serviceHostBase": {
+      "type": "string"
     }
   },
   "variables": {
@@ -170,7 +173,7 @@
       "cflinuxfs2ReleaseSha1": "acfa1c4aad1fa9ef4623bf189cbab788a53f678e"
     },
     "environmentAzureStack": {
-      "serviceHostBase": "azurestack.local",
+      "serviceHostBase": "[parameters('serviceHostBase')]",
       "secondaryDNS": "8.8.8.8",
       "dnsRecursor": "10.23.9.225",
       "boshReleaseUrl": "https://bosh.io/d/github.com/cloudfoundry/bosh?v=256.2",
