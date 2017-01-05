@@ -69,7 +69,7 @@
     },
     "mnNodeVMSize": {
       "type": "string",
-      "defaultValue": "Standard_D1_v2",
+      "defaultValue": "Standard_A2",
       "allowedValues": [
         "Standard_A1",
         "Standard_A2",
@@ -117,7 +117,7 @@
     },
     "txNodeVMSize": {
       "type": "string",
-      "defaultValue": "Standard_D1_v2",
+      "defaultValue": "Standard_A2",
       "allowedValues": [
         "Standard_A1",
         "Standard_A2",
@@ -157,14 +157,14 @@
   },
   "variables": {
     "location": "[resourceGroup().location]",
-    "artifactsLocationURL": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/ethereum-consortium-blockchain-network",
-    "apiVersionDeployments": "2016-09-01",
+    "artifactsLocationURL": "https://raw.githubusercontent.com/rlfmendes/azure-quickstart-templates/master/ethereum-consortium-blockchain-network",
+    "apiVersionDeployments": "2015-01-01",
     "apiVersionStorageAccounts": "2016-01-01",
-    "apiVersionAvailabilitySets": "2016-03-30",
-    "apiVersionNetworkSecurityGroups": "2016-09-01",
-    "apiVersionNetworkInterfaces": "2016-09-01",
-    "apiVersionVirtualMachines": "2016-03-30",
-    "apiVersionVirtualNetworks": "2016-09-01",
+    "apiVersionAvailabilitySets": "2015-06-15",
+    "apiVersionNetworkSecurityGroups": "2015-06-15",
+    "apiVersionNetworkInterfaces": "2015-06-15",
+    "apiVersionVirtualMachines": "2015-06-15",
+    "apiVersionVirtualNetworks": "2015-06-15",
     "authType": "password",
     "storageAccountType": "Standard_LRS",
     "namingInfix": "[toLower(substring(concat(parameters('namePrefix'), uniqueString(resourceGroup().id)), 0, 9))]",
