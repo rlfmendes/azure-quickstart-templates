@@ -553,7 +553,8 @@
           "BOSH_INIT_URL": "[variables('environment').boshInitUrl]",
           "KEEP_UNREACHABLE_VMS": "[variables('keepUnreachableVMs')]",
           "AUTO_DEPLOY_BOSH": "[parameters('autoDeployBosh')]",
-          "AZURE_STACK_RESOURCE": "[parameters('azureStackResource')]"
+          "AZURE_STACK_RESOURCE": "[parameters('azureStackResource')]",
+          "AZURE_STACK_DOMAIN": "[variables('environment').serviceHostBase]"
         },
         "protectedSettings": {
           "commandToExecute": "[concat('bash -l -c \"./setup_env', ' ', parameters('tenantID'), ' ', parameters('clientID'), ' \"', parameters('clientSecret'), '\" >/home/', parameters('adminUsername'), '/install.log 2>&1\"')]"
