@@ -49,7 +49,7 @@
     }
   },
   "variables": {
-    "apiVersionVirtualMachinesExtensions": "2016-03-30",
+    "apiVersionVirtualMachinesExtensions": "2015-06-15",
     "txNode": 0,
     "mnNode": 1,
     "maxPeers": 25
