@@ -72,7 +72,8 @@
     },
     "serviceHostBase": {
       "type": "string"
-    }
+    },
+    "azureStackDNSRecursor":{"type":"string"}
   },
   "variables": {
     "apiVersion": "2015-06-15",
@@ -175,7 +176,7 @@
     "environmentAzureStack": {
       "serviceHostBase": "[parameters('serviceHostBase')]",
       "secondaryDNS": "8.8.8.8",
-      "dnsRecursor": "10.23.9.225",
+      "dnsRecursor": "[parameters('azureStackDNSRecursor')]",
       "boshReleaseUrl": "https://bosh.io/d/github.com/cloudfoundry/bosh?v=256.2",
       "boshReleaseSha1": "ff2f4e16e02f66b31c595196052a809100cfd5a8",
       "boshAzureCPIReleaseUrl": "https://cloudfoundry.blob.core.windows.net/azurestack/bosh-azure-cpi-13-azurestack.1.tgz",
