@@ -277,7 +277,7 @@
     "ubuntuImage": {
       "publisher": "Canonical",
       "offer": "UbuntuServer",
-      "sku": "14.04.3-LTS",
+      "sku": "16.04.0-LTS",
       "version": "latest"
     }
   },
