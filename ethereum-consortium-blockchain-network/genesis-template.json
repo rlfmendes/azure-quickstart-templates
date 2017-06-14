@@ -4,7 +4,16 @@
       "balance": "1000000000000000000000000000000"
     }
   },
+<<<<<<< HEAD
 
+=======
+  "config": {
+    "homesteadBlock": 0,
+    "chainID": #NETWORKID,
+    "eip155Block": 0,
+    "eip158Block": 0
+  },
+>>>>>>> upstream/master
   "nonce": "0x0000000000000042",
   "difficulty": "#DIFFICULTY",
   "mixhash": "0x0000000000000000000000000000000000000000000000000000000000000000",

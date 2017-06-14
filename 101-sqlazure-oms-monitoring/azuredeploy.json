@@ -40,6 +40,15 @@
       "metadata": {
         "description": "Path of the template folder."
       }
+<<<<<<< HEAD:101-sqlazure-oms-monitoring/azuredeploy.json
+=======
+    },
+    "_artifactsLocationSasToken": {
+      "type": "securestring"
+    },
+    "quickstartTags": {
+      "type": "object"
+>>>>>>> upstream/master:azure-governance-operations-automation/nested/AutomationRunbooksOMSDashboard/OMSAutomationRunbooksDashboard.json
     }
   },
   "variables": {
@@ -85,6 +94,9 @@
       "type": "Microsoft.Automation/automationAccounts",
       "apiVersion": "[variables('aaApiVersion')]",
       "location": "[parameters('automationRegion')]",
+      "tags": {
+          "quickstartName": "[parameters('quickstartTags').name]"
+      },
       "properties": {
         "sku": {
           "name": "[variables('sku')]"

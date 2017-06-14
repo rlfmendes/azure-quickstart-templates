@@ -3,5 +3,9 @@
   "description": "Deploys all OMS Services to a Resource Group",
   "summary": "This template deploys all the OMS services with additional artifacts to a Resource Group ",
   "githubUsername": "krnese",
+<<<<<<< HEAD
   "dateUpdated": "2016-08-29"
+=======
+  "dateUpdated": "2017-06-07"
+>>>>>>> upstream/master
 }

@@ -86,6 +86,7 @@
       "version": "latest"
     },
     "imageReference": "[variables('osType')]",
+<<<<<<< HEAD
     "diagnosticsStorageAccountName": "[concat(uniqueString(concat(resourceGroup().id, variables('newStorageAccountSuffix'))), variables('newStorageAccountSuffix'))]",
     "diagnosticsStorageAccountResourceGroup": "[resourceGroup().name]",
     "accountid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',variables('diagnosticsStorageAccountResourceGroup'),'/providers/','Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName'))]",
@@ -97,8 +98,12 @@
     "wadcfgxend": "[concat('\"><MetricAggregation scheduledTransferPeriod=\"PT1H\"/><MetricAggregation scheduledTransferPeriod=\"PT1M\"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>')]",
     "computeApiVersion": "2016-03-30",
     "networkApiVersion": "2016-03-30",
+=======
+    "computeApiVersion": "2017-03-30",
+    "networkApiVersion": "2017-04-01",
+>>>>>>> upstream/master
     "storageApiVersion": "2015-06-15",
-    "insightsApiVersion": "2015-04-01"
+    "insightsApiVersion": "201-04-01"
   },
   "resources": [
     {
@@ -220,6 +225,7 @@
         "virtualMachineProfile": {
           "storageProfile": {
             "osDisk": {
+<<<<<<< HEAD
               "vhdContainers": [
                 "[concat('https://', variables('uniqueStringArray')[0], variables('newStorageAccountSuffix'), '.blob.core.windows.net/', variables('vhdContainerName'))]",
                 "[concat('https://', variables('uniqueStringArray')[1], variables('newStorageAccountSuffix'), '.blob.core.windows.net/', variables('vhdContainerName'))]",
@@ -230,6 +236,10 @@
               "name": "[variables('osDiskName')]",
               "caching": "ReadOnly",
               "createOption": "FromImage"
+=======
+		"createOption": "FromImage",
+		"caching": "ReadWrite"
+>>>>>>> upstream/master
             },
             "imageReference": "[variables('imageReference')]"
           },

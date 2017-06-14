@@ -14,22 +14,39 @@ Select-AzureRmSubscription -SubscriptionId $Conn.SubscriptionID -TenantId $Conn.
 
 $AAResourceGroup = Get-AutomationVariable -name "AzureAutomationResourceGroup"
 $AAAccount = Get-AutomationVariable -name "AzureAutomationAccount"
+<<<<<<< HEAD:101-sqlazure-oms-monitoring/scripts/scheduleIngestion.ps1
 $RunbookName = "sqlazureIngestion"
 $ScheduleName = "sqlazure"
+=======
+$RunbookName = "servicebusIngestion"
+$ScheduleName = "servicebusIngestionSchedule"
+>>>>>>> upstream/master:oms-servicebus-solution/scripts/scheduleIngestion.ps1
 
 $RunbookStartTime = $Date = $([DateTime]::Now.AddMinutes(10))
 
 [int]$RunFrequency = 10
 $NumberofSchedules = 60 / $RunFrequency
-"$NumberofSchedules schedules will be created"
+"*** $NumberofSchedules schedules will be created which will invoke the servicebusIngestion runbook to run every 10mins ***"
 
 $Count = 0
 While ($count -lt $NumberofSchedules)
 {
     $count ++
 
+    try
+    {
     "Creating schedule $ScheduleName-$Count for $RunbookStartTime for runbook $RunbookName"
     $Schedule = New-AzureRmAutomationSchedule -Name "$ScheduleName-$Count" -StartTime $RunbookStartTime -HourInterval 1 -AutomationAccountName $AAAccount -ResourceGroupName $AAResourceGroup
     $Sch = Register-AzureRmAutomationScheduledRunbook -RunbookName $RunbookName -AutomationAccountName $AAAccount -ResourceGroupName $AAResourceGroup -ScheduleName "$ScheduleName-$Count"
     $RunbookStartTime = $RunbookStartTime.AddMinutes($RunFrequency)
+<<<<<<< HEAD:101-sqlazure-oms-monitoring/scripts/scheduleIngestion.ps1
 }
+=======
+    }
+    catch
+    {throw "Creation of schedules has failed!"}
+}
+
+"Done!"
+
+>>>>>>> upstream/master:oms-servicebus-solution/scripts/scheduleIngestion.ps1

@@ -1,12 +1,10 @@
-# OpenShift Origin with Username / Password
+# OpenShift Origin Deployment Template
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fopenshift-origin-rhel%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fopenshift-origin-rhel%2Fazuredeploy.json" target="_blank">
-    <img src="http://armviz.io/visualizebutton.png"/>
-</a>
+Bookmark [aka.ms/OpenShift](http://aka.ms/OpenShift) for future reference.
 
-This template deploys OpenShift Origin with basic username / password for authentication to OpenShift. You can select to use either CentOS or RHEL for the OS. It includes the following resources:
+For the **OpenShift Origin** refer to https://github.com/Microsoft/openshift-origin
 
+<<<<<<< HEAD
 |Resource           |Properties                                                                                                                          |
 |-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 |Virtual Network    |**Address prefix:** 10.0.0.0/16<br />**Master subnet:** 10.0.0.0/24<br />**Node subnet:** 10.0.1.0/24                               |
@@ -89,3 +87,6 @@ This template creates an OpenShift user but does not make it a full OpenShift us
 ### Additional OpenShift Configuration Options
  
 You can configure additional settings per the official [OpenShift Origin Documentation](https://docs.openshift.org/latest/welcome/index.html).
+=======
+For the **OpenShift Container Platform** refer to https://github.com/Microsoft/openshift-container-platform
+>>>>>>> upstream/master

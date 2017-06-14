@@ -2,23 +2,20 @@
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "newStorageAccountName": {
-      "value": "GEN-UNIQUE"
-    },
     "adminUsername": {
-      "value": "azureuser"
+      "value": "GEN-UNIQUE"
     },
     "adminPassword": {
       "value": "GEN-PASSWORD"
     },
+<<<<<<< HEAD
     "adVMSize": {
       "value": "Standard_D2"
     },
+=======
+>>>>>>> upstream/master
     "dnsPrefix": {
       "value": "GEN-UNIQUE"
-    },
-    "publicIPAddressName": {
-      "value": "myPubIp"
     },
     "domainName": {
       "value": "mydomain.local"

@@ -5,11 +5,12 @@
     "VMSSName": {
       "type": "string"
     },
+    "singlePlacementGroup": {
+      "type": "bool",
+      "defaultValue": true
+    },
     "instanceCount": {
-      "type": "int",
-      "metadata": {
-        "description": "Number of VM instances"
-      }
+      "type": "int"
     },
     "subnetId": {
       "type": "string"
@@ -49,7 +50,11 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachineScaleSets",
+<<<<<<< HEAD
       "apiVersion": "2016-03-30",
+=======
+      "apiVersion": "2017-03-30",
+>>>>>>> upstream/master
       "name": "[parameters('vmSSName')]",
       "location": "[resourceGroup().location]",
       "tags": {
@@ -64,12 +69,18 @@
         "capacity": "[parameters('instanceCount')]"
       },
       "properties": {
+<<<<<<< HEAD
+=======
+        "singlePlacementGroup": "[parameters('singlePlacementGroup')]",
+        "overprovision": "true",
+>>>>>>> upstream/master
         "upgradePolicy": {
           "mode": "Manual"
         },
         "virtualMachineProfile": {
           "storageProfile": {
             "osDisk": {
+<<<<<<< HEAD
               "vhdContainers": [
                 "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', variables('uniqueStringArray')[0])).primaryEndpoints.blob, 'vhds')]",
                 "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', variables('uniqueStringArray')[1])).primaryEndpoints.blob, 'vhds')]",
@@ -80,6 +91,10 @@
               "name": "vmssosdisk",
               "caching": "ReadOnly",
               "createOption": "FromImage"
+=======
+              "createOption": "FromImage",
+              "caching": "ReadWrite"
+>>>>>>> upstream/master
             },
             "imageReference": {
               "publisher": "MicrosoftWindowsServer",

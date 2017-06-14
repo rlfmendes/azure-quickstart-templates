@@ -375,4 +375,59 @@ describe('Template', function () {
       });
     });
   });
+<<<<<<< HEAD
+=======
+
+  if (runRemoteValidation || runRemoteDeployment) {
+    // Group tests in chunks defined by an environment variable or by the default value.
+    // we probably shouldn't deploy a ton of templates at once...
+    var groupSizeMaximum = isDefined(process.env.PARALLEL_DEPLOYMENT_NUMBER) ? parseInt(process.env.PARALLEL_DEPLOYMENT_NUMBER) : 2;
+    var testIndex = 0;
+
+    var testDirectoryGroup = [];
+    testDirectories.forEach(function (testDirectory) {
+      testDirectoryGroup.push(testDirectory);
+      testIndex += 1;
+
+      if (testIndex === testDirectories.length || testDirectoryGroup.length === groupSizeMaximum) {
+        parallel('Running ' + testDirectoryGroup.length + ' Parallel Template Validation(s)...', function () {
+          testDirectoryGroup.forEach(function (testDirectory) {
+            it(testDirectory, function () {
+              var templateFilePath = path.join(testDirectory, 'azuredeploy.json');
+              var parametersFilePath = path.join(testDirectory, 'azuredeploy.parameters.json');
+
+              var requestBody = {
+                template: readJSONFile(templateFilePath),
+                parameters: readJSONFile(parametersFilePath)
+              };
+
+              if (fs.existsSync(path.join(testDirectory, 'prereqs'))) {
+                var preReqTemplateFilePath = path.join(testDirectory, 'prereqs/azureprereqdeploy.json');
+                var preReqParametersFilePath = path.join(testDirectory, 'prereqs/azureprereqdeploy.parameters.json');
+
+                requestBody.preReqTemplate = readJSONFile(preReqTemplateFilePath);
+                requestBody.preReqParameters = readJSONFile(preReqParametersFilePath);
+              }
+
+              return validateTemplate(requestBody, templateFilePath)
+                .then(function () {
+                  return deployTemplate(requestBody, templateFilePath);
+                })
+                .catch(function (err) {
+                  var errorString = 'Template Validiation Failed. Try deploying your template with the commands:\n';
+                  errorString += 'azure group template validate --resource-group (your_group_name) ';
+                  errorString += ' --template-file ' + templateFilePath + ' --parameters-file ' + parametersFilePath + '\n';
+                  errorString += 'azure group deployment create --resource-group (your_group_name) ';
+                  errorString += ' --template-file ' + templateFilePath + ' --parameters-file ' + parametersFilePath;
+                  assert(false, errorString + ' \n\nServer Error:' + JSON.stringify(err, null, 4));
+                });
+            });
+          });
+        });
+
+        testDirectoryGroup.length = 0;
+      }
+    });
+  }
+>>>>>>> upstream/master
 });

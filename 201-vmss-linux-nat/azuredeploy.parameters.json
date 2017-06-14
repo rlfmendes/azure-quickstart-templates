@@ -6,7 +6,11 @@
       "value": "Standard_A1"
     },
     "ubuntuOSVersion": {
+<<<<<<< HEAD
       "value": "15.10"
+=======
+      "value": "16.04-LTS"
+>>>>>>> upstream/master
     },
     "vmssName": {
       "value": "GEN-UNIQUE-32"

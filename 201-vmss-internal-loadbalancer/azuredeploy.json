@@ -94,8 +94,13 @@
       "version": "latest"
     },
     "imageReference": "[variables('osType')]",
+<<<<<<< HEAD
     "computeApiVersion": "2016-03-30",
     "networkApiVersion": "2016-03-30",
+=======
+    "computeApiVersion": "2017-03-30",
+    "networkApiVersion": "2017-04-01",
+>>>>>>> upstream/master
     "storageApiVersion": "2015-06-15"
   },
   "resources": [

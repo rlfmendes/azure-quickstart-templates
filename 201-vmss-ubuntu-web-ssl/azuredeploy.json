@@ -316,6 +316,7 @@
         "virtualMachineProfile": {
           "storageProfile": {
             "osDisk": {
+<<<<<<< HEAD
               "vhdContainers": [
                 "[concat('https://', variables('vmssStringArray')[0], variables('newStorageAccountSuffix'), '.blob.core.windows.net/', variables('vhdContainerName'))]",
                 "[concat('https://', variables('vmssStringArray')[1], variables('newStorageAccountSuffix'), '.blob.core.windows.net/', variables('vhdContainerName'))]",
@@ -325,6 +326,9 @@
               ],
               "name": "[variables('osDiskName')]",
               "caching": "ReadOnly",
+=======
+              "caching": "ReadWrite",
+>>>>>>> upstream/master
               "createOption": "FromImage"
             },
             "imageReference": "[variables('imageReference')]"

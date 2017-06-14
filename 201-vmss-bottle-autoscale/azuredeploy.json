@@ -89,9 +89,14 @@
       "version": "latest"
     },
     "imageReference": "[variables('osType')]",
+<<<<<<< HEAD
     "computeApiVersion": "2016-03-30",
     "networkApiVersion": "2016-06-01",
     "storageApiVersion": "2016-01-01",
+=======
+    "computeApiVersion": "2017-03-30",
+    "networkApiVersion": "2017-04-30",
+>>>>>>> upstream/master
     "insightsApiVersion": "2015-04-01"
   },
   "resources": [
@@ -218,10 +223,15 @@
         "virtualMachineProfile": {
           "storageProfile": {
             "osDisk": {
+<<<<<<< HEAD
               "vhdContainers": "[take(variables('vhdContainerArray'), variables('saCount'))]",
               "name": "[variables('osDiskName')]",
               "caching": "ReadOnly",
               "createOption": "FromImage"
+=======
+              "createOption": "FromImage",
+              "caching": "ReadWrite"
+>>>>>>> upstream/master
             },
             "imageReference": "[variables('imageReference')]"
           },
@@ -335,7 +345,7 @@
                   "timeWindow": "PT5M",
                   "timeAggregation": "Average",
                   "operator": "GreaterThan",
-                  "threshold": 60.0
+                  "threshold": 60
                 },
                 "scaleAction": {
                   "direction": "Increase",
@@ -354,7 +364,7 @@
                   "timeWindow": "PT5M",
                   "timeAggregation": "Average",
                   "operator": "LessThan",
-                  "threshold": 30.0
+                  "threshold": 30
                 },
                 "scaleAction": {
                   "direction": "Decrease",

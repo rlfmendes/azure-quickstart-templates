@@ -8,12 +8,21 @@
         "description": "This is the name of the your VM"
       }
     },
-    "userImageStorageAccountName": {
+    "bootDiagnosticsStorageAccountName": {
       "type": "string",
       "metadata": {
         "description": "This is the name of the your storage account"
       }
     },
+<<<<<<< HEAD
+=======
+    "bootDiagnosticsStorageAccountResourceGroupName": {
+      "type": "string",
+      "metadata": {
+        "description": "Resource group of the existing storage account"
+      }
+    },
+>>>>>>> upstream/master
     "osDiskVhdUri": {
       "type": "string",
       "metadata": {
@@ -26,7 +35,7 @@
         "description": "DNS Label for the Public IP. Must be lowercase. It should match with the following regular expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$ or it will raise an error."
       }
     },
-    "adminUserName": {
+    "adminUsername": {
       "type": "string",
       "metadata": {
         "description": "User Name for the Virtual Machine"
@@ -55,10 +64,13 @@
       }
     },
     "newOrExistingVnet": {
-      "allowedValues": [ "new", "existing" ],
+      "allowedValues": [
+        "new",
+        "existing"
+      ],
       "type": "string",
       "metadata": {
-        "description":  "Select if this template needs a new VNet or will reference an existing VNet"
+        "description": "Select if this template needs a new VNet or will reference an existing VNet"
       }
     },
     "newOrExistingVnetName": {
@@ -77,6 +89,7 @@
     }
   },
   "variables": {
+    "imageName": "myCustomImage",
     "publicIPAddressName": "[concat(parameters('customVmName'),'IP')]",
     "vmName": "[parameters('customVmName')]",
     "nicName": "[concat(parameters('customVmName'),'Nic')]",
@@ -86,6 +99,7 @@
   },
   "resources": [
     {
+<<<<<<< HEAD
             "apiVersion": "2015-01-01",
             "name": "vnet-template",
             "type": "Microsoft.Resources/deployments",
@@ -104,7 +118,46 @@
                     }
                 }
             }
+=======
+      "type": "Microsoft.Compute/images",
+      "apiVersion": "2016-04-30-preview",
+      "name": "[variables('imageName')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "storageProfile": {
+          "osDisk": {
+            "osType": "Windows",
+            "osState": "Generalized",
+            "blobUri": "[parameters('osDiskVhdUri')]",
+            "storageAccountType": "Standard_LRS"
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "2015-01-01",
+      "name": "vnet-template",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "incremental",
+        "templateLink": {
+          "uri": "[variables('templatelink')]",
+          "contentVersion": "1.0.0.0"
+>>>>>>> upstream/master
         },
+        "parameters": {
+          "virtualNetworkName": {
+            "value": "[parameters('newOrExistingVnetName')]"
+          },
+          "subnetName": {
+            "value": "[parameters('newOrExistingSubnetName')]"
+          },
+          "existingVnetResourceGroupName": {
+            "value": "[parameters('existingVnetResourceGroupName')]"
+          }
+        }
+      }
+    },
     {
       "apiVersion": "[variables('apiVersion')]",
       "type": "Microsoft.Network/publicIPAddresses",
@@ -144,7 +197,7 @@
       }
     },
     {
-      "apiVersion": "[variables('apiVersion')]",
+      "apiVersion": "2016-04-30-preview",
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[variables('vmName')]",
       "location": "[resourceGroup().location]",
@@ -161,6 +214,7 @@
           "adminPassword": "[parameters('adminPassword')]"
         },
         "storageProfile": {
+<<<<<<< HEAD
           "osDisk": {
             "name": "[concat(variables('vmName'),'-osDisk')]",
             "osType": "[parameters('osType')]",
@@ -172,6 +226,10 @@
             "vhd": {
               "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', parameters('userImageStorageAccountName')), variables('apiVersion')).primaryEndpoints.blob, 'vhds/',variables('vmName'), uniquestring(resourceGroup().id), 'osDisk.vhd')]"
             }
+=======
+          "imageReference": {
+            "id": "[resourceId('Microsoft.Compute/images', variables('imageName'))]"
+>>>>>>> upstream/master
           }
         },
         "networkProfile": {
@@ -184,7 +242,11 @@
         "diagnosticsProfile": {
           "bootDiagnostics": {
             "enabled": "true",
+<<<<<<< HEAD
             "storageUri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', parameters('userImageStorageAccountName')), variables('apiVersion')).primaryEndpoints.blob)]"
+=======
+            "storageUri": "[concat(reference(resourceId(parameters('bootDiagnosticsStorageAccountResourceGroupName'), 'Microsoft.Storage/storageAccounts/', parameters('bootDiagnosticsStorageAccountName')), variables('apiVersion')).primaryEndpoints.blob)]"
+>>>>>>> upstream/master
           }
         }
       }
